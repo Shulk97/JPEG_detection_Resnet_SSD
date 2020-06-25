@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export DATASET_PATH_VAL=/mnt/CE0454E10454CDD9/Users/Thomas/Documents/Etudes/ASI/ASI51/PAO/SSD_criann
+export PROJECT_PATH=.
+export DATASET_PATH_TRAIN=/mnt/CE0454E10454CDD9/Users/Thomas/Documents/Etudes/ASI/ASI51/PAO/SSD_criann
+export EXPERIMENTS_OUTPUT_DIRECTORY=.
+export LOG_DIRECTORY=../logs

@@ -1,0 +1,7 @@
+[submodule "jpeg2dct"]
+	path = jpeg2dct
+	url = https://github.com/uber-research/jpeg2dct
+
+[submodule "jpegdecoder"]
+	path = jpegdecoder
+	url = https://github.com/D3lt4lph4/jpeg_decoder
