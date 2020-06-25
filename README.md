@@ -5,6 +5,9 @@ Several architectures are trained in classification then the weights are used to
 The project continue the research of Benjamin Deguerre on object detection on JPEG images using VGG backbone.
 This project experiments namely the use of Resnet as a backbone.
 
+**This project was originally hosted on Gitlab INSA Rouen at [this adress](https://gitlab.insa-rouen.fr/tconstum/pao_jpeg_bis)**
+**The results of this project have then been improved and led to a new publication of Benjamin Deguerre published on June 10th [here](https://arxiv.org/abs/2006.05732). The corresponding code was also published [here](https://github.com/D3lt4lph4/jpeg_deep)**
+
 * Fast object detection in compressed JPEG Images (INSA Rouen Normandy) : https://arxiv.org/abs/1904.08408 (Benjamin Deguerre, Clément Chatelain, Gilles Gasso)
 * Faster Neural Networks Straight from JPEG (Über) : https://papers.nips.cc/paper/7649-faster-neural-networks-straight-from-jpeg (Lionel Gueguen, Alex Sergeev, Ben Kadlec, Rosanne Liu, Jason Yosinski)
 
