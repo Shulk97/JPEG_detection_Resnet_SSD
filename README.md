@@ -1,12 +1,12 @@
 # INSA Rouen Project - Neural network for object detection in JPEG images
 
-This project aims to train a neural network to detect object in JPEG images. 
-Several architectures are trained in classification then the weights are used to fine-tune a SSD based network for object detection.
-The project continue the research of Benjamin Deguerre on object detection on JPEG images using VGG backbone.
+This project aims to train a neural network to detect objects in JPEG images. 
+Several architectures were trained for classification then the weights were used to fine-tune a SSD based network for object detection.
+The project continue the research of Benjamin Deguerre on object detections in JPEG images using a VGG backbone.
 This project experiments namely the use of Resnet as a backbone.
 
 **This project was originally hosted on Gitlab INSA Rouen at [this adress](https://gitlab.insa-rouen.fr/tconstum/pao_jpeg_bis)**
-**The results of this project have then been improved and led to a new publication of Benjamin Deguerre published on June 10th [here](https://arxiv.org/abs/2006.05732). The corresponding code was also published [here](https://github.com/D3lt4lph4/jpeg_deep)**
+**The results of this project have then been improved by Benjamin Deguerre and led to a new publication published on June 10th [here](https://arxiv.org/abs/2006.05732). The corresponding code was also published [here](https://github.com/D3lt4lph4/jpeg_deep)**
 
 * Fast object detection in compressed JPEG Images (INSA Rouen Normandy) : https://arxiv.org/abs/1904.08408 (Benjamin Deguerre, Clément Chatelain, Gilles Gasso)
 * Faster Neural Networks Straight from JPEG (Über) : https://papers.nips.cc/paper/7649-faster-neural-networks-straight-from-jpeg (Lionel Gueguen, Alex Sergeev, Ben Kadlec, Rosanne Liu, Jason Yosinski)
@@ -75,16 +75,16 @@ export PROJECT_PATH=$HOME/vgg_jpeg
 
 
 Indicate the network architecture in the "--archi" argument :
-* cb5_only : CbCr and Y only go through the conv block 5 of Resnet50
+* cb5_only : CbCr and Y are only going through the conv block 5 of Resnet50
 * deconv : deconvolution architecture of Über article
 * up_sampling : up sampling architecture of Über article
-* up_sampling_rfa : up sampling rfa architecture of Über article
+* up_sampling_rfa : up sampling RFA architecture of Über article
 * y_cb4_cbcr_cb5 : Y go through the conv block 4 of Resnet50 and CbCr go through the conv block 5
-* late_concat_rfa_thinner : late concat rfa thinner architecture of Über article
-* late_concat_more_channels : late concat rfa thinner architecture of Über article with more channels
-* resnet_rgb : classical Resnet50 RGB
-* vggA_dct : VGG A DCT from Benjamin Deguerre's article
-* vggD_dct : VGG D DCT from Benjamin Deguerre's article
+* late_concat_rfa_thinner : late concat RFA thinner architecture of Über article
+* late_concat_more_channels : late concat RFA thinner architecture of Über article with more channels
+* resnet_rgb : regular Resnet50 RGB
+* vggA_dct : VGG A DCT architecture from Benjamin Deguerre's research paper
+* vggD_dct : VGG D DCT architecture from Benjamin Deguerre's research paper
 
 Indicate the path to the config file to use. The configuration file should be named 'config_file.py'
 For example : 
@@ -123,13 +123,13 @@ To train each of the following architectures, the program has to be called using
 python3 training_dct_pascal_j2d_resnet.py -vd 0 --crop --p07p12 --reg --resnet --archi "ssd_custom" --restart "../2564_epoch-133.h5" 
 ```
 
-Choose between --p07 for the Pascal VOC 2007 and --p07p12 for the evaluation set of Pascal VOC 2007 and 2012 combined.
-Add the "--restart" argument to restart a training from pretrained weights. Since there is no multi-GPU support for this part the training can be pretty long (more than 48 hours on an Nvidia P100).
+Choose between --p07 for the Pascal VOC 2007 and --p07p12 for the evaluation set of both Pascal VOC 2007 and 2012 combined.
+Add the "--restart" argument to restart a training from pretrained weights. Since there is no multi-GPU support for this part the training can be pretty long (more than 48 hours on a Nvidia P100).
 It is then convenient to separate the training in several sessions.
 Indicate the network architecture in the "--archi" argument :
 * "ssd_custom" : the extra-feature layers of SSD are removed to match dimension with full Late-concat-RFA architecture of Über (Experiment one)
 * "y\_cb4\_cbcr_cb5" Y go through the conv block 4 of Resnet50 and CbCr go through conv block 5 (Experiment 2)
-* "cb5_only" CbCr and Y only go through the conv block 5 of Resnet50 (Experiment 3)
+* "cb5_only" CbCr and Y are only going through the conv block 5 of Resnet50 (Experiment 3)
 * "up_sampling" up sampling RFA architecture of Über article (Experiment 4)
 * "deconv" deconvolution architecture of Über article (Experiment 5)
 
@@ -141,10 +141,10 @@ The results and weights are stored in the folder corresponding to the GPU device
 To launch the evaluation, the same environment variables as above have to be set.
 To launch the evaluation on the Pascal VOC 2007 test set :
 ```bash
-python3 evaluation.py -p07 --archi "cb5_only" "../4271_epoch-123.h5"
+python3 evaluation.py -p07 --archi "cb5_only" "../experiment_k_epoch-N.h5"
 ```
 
-The values of the choices of dataset and architecture are the same as above.
+The datasets and architectures available are the same as for training
 The results of evaluation will be stored in ```EXPERIMENTS_OUTPUT_DIRECTORY ```
 
 ## Experiments carried out
