@@ -163,10 +163,10 @@ The results are better than VGG DCT but far from original ResNet results.
 
 4) Same training as 1) but this time the model loads pretained weights of ResNet50 "resnet50\_weights\_tf\_dim\_ordering\_tf\_kernels.h5" on the blocks 3 to 5. To do this, I had to modify the number
    of channels in several layers to get the original number of channels in the blocks 3 to 5.
-   The numbers of channels in the last layer of the blocks 1 and 2 of luma were changed from 768 to 384. The number of channels in the last layer of the block of CrCb was changed from 256 to 128.
-   These changes are mandatory for the number of input channels in block 3 to be 512. With this modification, the channels of the resnet layers are identical to the original resnet,
-   it is then possible to load the pretrained weight of original ResNet50.
-   The results are pretty good, not as good as pretained ResNetRGB but better that both VggDct and ResnetRGB from scratch.
+   The numbers of channels in the last layer of the blocks 1 and 2 of Y were changed from 768 to 384. The number of channels in the last layer of the block of CrCb was changed from 256 to 128.
+   These changes are mandatory for the number of input channels in block 3 to be 512 (384+128). With this modification, the number of channels of the resnet layers are identical to the original resnet.
+   It is then possible to load the pretrained weights of original ResNet50.
+   The results are pretty good, not as good as pretained ResNetRGB but better than VggDct and ResnetRGB trained from scratch.
    
 5) Since I had to decrease the number of channels for the blocks 3 to 5, I wanted to see if increasing the number of channels of the blocks 1 and 2 was making a difference. 
    So I changed the number of channels of each block to [256, 256, 768]. This increase in the number of channels does not have a significant influence on the val accuracy. 
@@ -180,9 +180,9 @@ The results are better than VGG DCT but far from original ResNet results.
    
 8) The architecture is the same as 5) until CbCr and Y are concatenated. Then, the information only go through CB5 of original Resnet.
    The results are not that bad compared to other expriments and regarding the shallowness of the architecture. This architecture is useful for detection part because 
-   it avoids dimensions problems and then allows to keep the extra-feature layers unchanged. (see explanations in detection part)
+   it avoids dimensions problems and then allows to keep the extra-feature layers of SSD unchanged. (see explanations in detection part)
    
-9) Another architecture experimented for object detection. To avoids dimensions problems with SSD, cbcr is concatenated to Y between CB4 and CB5.
+9) Another architecture experimented for object detection. To avoids dimensions problems with SSD, CBCR is concatenated to Y between CB4 and CB5.
    Thus, CbCr only go through CB5 and then colour is not taken into account by CB4.
    
 10) Experimentation of the deconvolution-RFA architecture of the Über article. The results are the best of all the architectures tested which is consistent with the results of Über.
@@ -210,10 +210,10 @@ The results are better than VGG DCT but far from original ResNet results.
 
 #### Details on experimentations
 
-1) The convolutionnal blocks of VGG are replaced by the convolutionnal blocks from 3 to 5 of Resnet. Somes changes are needed 
+1) The convolutionnal blocks of VGG are replaced with the convolutionnal blocks from 3 to 5 of Resnet. Somes changes are needed 
    for the extra feature layers. Indeed, the Late-Concat-RFA-Thinner architecture lead to a smaller output layer size than VGG, which means that some layers has to be removed.
-   The last layers of the original SSD lead to a layer size of 1*1, which means that the output of resnet layers cannot be smaller that the VGG ones if the extra-feature layers of SSD are kept unchanged.
-   The extra-feature layers from 6\_2 to 8_2 are removed to avoid dimension errors. 
+   The last layers of the original SSD lead to a layer size of 1\*1, which means that the output of resnet layers cannot be smaller that the VGG ones if the extra-feature layers of SSD are kept unchanged.
+   The extra-feature layers from 6\_2 to 8\_2 are removed to avoid dimension errors. 
    The relation between old and new extra feature layers is as follows :
    * conv4\_3 stays conv4_3 (VGG notation)
    * fc7 becomes conv3_3 (resnet)
@@ -223,7 +223,7 @@ The results are better than VGG DCT but far from original ResNet results.
 
    The mAP obtained with this architecture is the best obtained compared to other methods.
    
-2) The non-VGG SSD layers are kept unchanged. The architecture experimented takes as base the late concat RFA thinner
+2) The non-VGG SSD layers are kept unchanged. The architecture experimented takes as baseline the late concat RFA thinner
    architecture but the CB3 is removed and the stride of the last layer of Y becomes (1,1). Moreover, the CbCr is concatenated with Y between CB4 and
    CB5 instead of between CB3 and CB4 which means that only Y goes through CB4 and not CbCR.
    
@@ -237,8 +237,8 @@ The results are better than VGG DCT but far from original ResNet results.
 It appears from the results that the modification of extra-feature layers is more beneficial for the mAP than modifying the classication
 backbone to match dimensions. Indeed, even if the deconvolution network shows the best accuracy in classification, the best mAP
 is obtained with the ssd_custom architecture where extra features layers are replaced with Resnet layers.
-Some classes are particularly better recognized with ssd_custom. This is the case with the classes car, cat sheep and tv monitor
-Yet, some classes are better recognized with other architecture than ssd_custom. This is especially the case for the classes bird and cat and train
+Some classes are particularly better recognized with ssd_custom. This is the case with the classes car, cat sheep and tv monitor.
+Yet, some classes are better recognized with other architecture than ssd_custom. This is especially the case for the classes bird, cat and train
 which are better recognized by deconv or up sampling architectures.
 The results are quite the same between PV val 2012 and PV test 2007 except for the SSD custom architecture which gains almost 4% of mAP.
 
