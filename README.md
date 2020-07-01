@@ -193,7 +193,7 @@ The results are better than VGG DCT but far from original ResNet results.
 |-------------------------------------|----------------|----------------|-----------|-----------|------|
 | Original Resnet50         |                |                | 0.793  | 0.948    |      |
 | ResNet DCT from Uber (Late Concat RFA Thinner)             |                |                | 0.754  | 0.930    |      |
-| VGG DCT from Benjamin               |                |                | 0.420     | 0.669     |      |
+| VGG DCT from Benjamin Deguerre              |                |                | 0.420     | 0.669     |      |
 | 1) Resnet50 DCT from scratch           | 0.734          | 0.911        | 0.525     | 0.768     | 2.13 |
 | 2) Resnet50 RGB from scratch           | 0.733          | 0.922          | 0.519     | 0.761     | 2.20 |
 | 3) Resnet50 RGB with pretained weights | 0.875          | 0.981         | 0.675     | 0.885     | 1.44 |
@@ -244,7 +244,7 @@ The results are quite the same between PV val 2012 and PV test 2007 except for t
 
 #### Summary of results
 
-| Architecture                        | mAP on Pascal VOC val 2012(%)| mAP on Pascal VOC test 2007 (%)|Training loss| Val loss |
+| Architecture                        | mAP on Pascal VOC val 2012 (%)| mAP on Pascal VOC test 2007 (%)|Training loss| Val loss |
 |-------------------------------------|----------------|----------------|-----------|-|
 |SSD DCT with VGG||47.8|||
 | 1) SSD with CB3 to CB5 Resnet (custom SSD)|59.2|63|3.4521|3.9092|
