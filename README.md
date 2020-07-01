@@ -154,6 +154,8 @@ The results of evaluation will be stored in ```EXPERIMENTS_OUTPUT_DIRECTORY ```
 
 #### Details on experimentations
 
+**Implementation of the following architectures can be found [here](classification_part/vgg_jpeg_keras/networks/resnet_dct.py)**
+
 1) Training from scratch of a customized ResNet50 able to handle DCT inputs. The modified layers follow the architecture "Late Concat RFA thinner" explained in the UBER article.
 The results are better than VGG DCT but far from original ResNet results.
 
@@ -210,6 +212,8 @@ The results are better than VGG DCT but far from original ResNet results.
 ### Detection part
 
 #### Details on experimentations
+
+**Implementation of the following architectures can be found [here](localisation_part/models/keras_ssd300_dct_j2d_resnet.py)**
 
 1) The convolutionnal blocks of VGG are replaced with the convolutionnal blocks from 3 to 5 of Resnet. Somes changes are needed 
    for the extra feature layers. Indeed, the Late-Concat-RFA-Thinner architecture lead to a smaller output layer size than VGG, which means that some layers has to be removed.
