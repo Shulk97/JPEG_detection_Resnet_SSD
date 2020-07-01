@@ -1,15 +1,16 @@
 # INSA Rouen Project - Neural network for object detection in JPEG images
 
-This project aims to train a neural network to detect objects in JPEG images. 
-Several architectures were trained for classification then the weights were used to fine-tune a SSD based network for object detection.
+This project aims to train a neural network to detect objects in JPEG images. Several architectures were trained for classification then the weights were used to fine-tune a SSD based network for object detection.
+This project was carried out as an optional project at INSA Rouen Normandy and was supervised by Benjamin Deguerre.
 The project continue the research of Benjamin Deguerre on object detections in JPEG images using a VGG backbone.
-This project experiments namely the use of Resnet as a backbone.
+This project experiments namely the use of Resnet as a backbone for detection.
 
-**This project was originally hosted on Gitlab INSA Rouen at [this adress](https://gitlab.insa-rouen.fr/tconstum/pao_jpeg_bis)**
-**The results of this project have then been improved by Benjamin Deguerre and led to a new publication published on June 10th [here](https://arxiv.org/abs/2006.05732). The corresponding code was also published [here](https://github.com/D3lt4lph4/jpeg_deep)**
-
+### Reference articles : 
 * Fast object detection in compressed JPEG Images (INSA Rouen Normandy) : https://arxiv.org/abs/1904.08408 (Benjamin Deguerre, Clément Chatelain, Gilles Gasso)
 * Faster Neural Networks Straight from JPEG (Über) : https://papers.nips.cc/paper/7649-faster-neural-networks-straight-from-jpeg (Lionel Gueguen, Alex Sergeev, Ben Kadlec, Rosanne Liu, Jason Yosinski)
+
+**This project was originally hosted on Gitlab INSA Rouen at [this adress](https://gitlab.insa-rouen.fr/tconstum/pao_jpeg_bis)**
+**The results of this project have then been improved by Benjamin Deguerre and led to a new publication published on June 10th ["Object Detection in the DCT Domain: is Luminance the Solution?"](https://arxiv.org/abs/2006.05732). The corresponding code was also published [here](https://github.com/D3lt4lph4/jpeg_deep)**
 
 ## Contents
 
