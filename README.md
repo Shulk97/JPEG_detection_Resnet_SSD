@@ -2,7 +2,7 @@
 
 This project aims to train a neural network to detect objects in JPEG images. Several architectures were trained for classification then the weights were used to fine-tune a SSD based network for object detection.
 This project was carried out as an optional project at INSA Rouen Normandy and was supervised by Benjamin Deguerre.
-The project continue the research of Benjamin Deguerre on object detections in JPEG images using a VGG backbone.
+The project continue the research of [Benjamin Deguerre](https://github.com/D3lt4lph4) on object detections in JPEG images using a VGG backbone.
 This project experiments namely the use of Resnet as a backbone for detection.
 
 ### Reference articles : 
