@@ -7,7 +7,7 @@ This project experiments namely the use of Resnet as a backbone for detection.
 
 ### Reference articles : 
 * Fast object detection in compressed JPEG Images (INSA Rouen Normandy) : https://arxiv.org/abs/1904.08408 (Benjamin Deguerre, Clément Chatelain, Gilles Gasso)
-* Faster Neural Networks Straight from JPEG (Über) : https://papers.nips.cc/paper/7649-faster-neural-networks-straight-from-jpeg (Lionel Gueguen, Alex Sergeev, Ben Kadlec, Rosanne Liu, Jason Yosinski)
+* Faster Neural Networks Straight from JPEG (Uber) : https://papers.nips.cc/paper/7649-faster-neural-networks-straight-from-jpeg (Lionel Gueguen, Alex Sergeev, Ben Kadlec, Rosanne Liu, Jason Yosinski)
 
 **This project was originally hosted on Gitlab INSA Rouen at [this adress](https://gitlab.insa-rouen.fr/tconstum/pao_jpeg_bis)**
 **The results of this project have then been improved by Benjamin Deguerre and led to a new publication published on June 10th ["Object Detection in the DCT Domain: is Luminance the Solution?"](https://arxiv.org/abs/2006.05732). The corresponding code was also published [here](https://github.com/D3lt4lph4/jpeg_deep)**
@@ -79,12 +79,12 @@ export PROJECT_PATH=$HOME/vgg_jpeg
 
 Indicate the network architecture in the "--archi" argument :
 * cb5_only : CbCr and Y are only going through the conv block 5 of Resnet50
-* deconv : deconvolution architecture of Über article
-* up_sampling : up sampling architecture of Über article
-* up_sampling_rfa : up sampling RFA architecture of Über article
+* deconv : deconvolution architecture of Uber article
+* up_sampling : up sampling architecture of Uber article
+* up_sampling_rfa : up sampling RFA architecture of Uber article
 * y_cb4_cbcr_cb5 : Y go through the conv block 4 of Resnet50 and CbCr go through the conv block 5
-* late_concat_rfa_thinner : late concat RFA thinner architecture of Über article
-* late_concat_more_channels : late concat RFA thinner architecture of Über article with more channels
+* late_concat_rfa_thinner : late concat RFA thinner architecture of Uber article
+* late_concat_more_channels : late concat RFA thinner architecture of Uber article with more channels
 * resnet_rgb : regular Resnet50 RGB
 * vggA_dct : VGG A DCT architecture from Benjamin Deguerre's research paper
 * vggD_dct : VGG D DCT architecture from Benjamin Deguerre's research paper
@@ -130,11 +130,11 @@ Choose between --p07 for the Pascal VOC 2007 and --p07p12 for the evaluation set
 Add the "--restart" argument to restart a training from pretrained weights. Since there is no multi-GPU support for this part the training can be pretty long (more than 48 hours on a Nvidia P100).
 It is then convenient to separate the training in several sessions.
 Indicate the network architecture in the "--archi" argument :
-* "ssd_custom" : the extra-feature layers of SSD are removed to match dimension with full Late-concat-RFA architecture of Über (Experiment one)
+* "ssd_custom" : the extra-feature layers of SSD are removed to match dimension with full Late-concat-RFA architecture of Uber (Experiment one)
 * "y\_cb4\_cbcr_cb5" Y go through the conv block 4 of Resnet50 and CbCr go through conv block 5 (Experiment 2)
 * "cb5_only" CbCr and Y are only going through the conv block 5 of Resnet50 (Experiment 3)
-* "up_sampling" up sampling RFA architecture of Über article (Experiment 4)
-* "deconv" deconvolution architecture of Über article (Experiment 5)
+* "up_sampling" up sampling RFA architecture of Uber article (Experiment 4)
+* "deconv" deconvolution architecture of Uber article (Experiment 5)
 
 
 The results and weights are stored in the folder corresponding to the GPU device number indicated for the argument "-vd". For the command above it would be "./0". 
@@ -180,8 +180,8 @@ The results are better than VGG DCT but far from original ResNet results.
 6) I tried to use the same parameters of SGD used for the original ResNet which are lr=0.1 and decay=0.0001, instead of the lr=0.01 and decay=0 used previously. 
    The difference is not significative but a bit better. The low difference is probably due to the same reasons as in 5)
    
-7) Same as 6) but the architecture of the first layers of Y and CbCr are changed to follow the architecture "Up Sampling RFA" from Über. The results are better than 6).
-   This is consistant with the Über article which shows a difference of 0.3% of accuracy on average between "Up Sampling RFA" and "Late Concat RFA Thinner".
+7) Same as 6) but the architecture of the first layers of Y and CbCr are changed to follow the architecture "Up Sampling RFA" from Uber. The results are better than 6).
+   This is consistant with the Uber article which shows a difference of 0.3% of accuracy on average between "Up Sampling RFA" and "Late Concat RFA Thinner".
    
 8) The architecture is the same as 5) until CbCr and Y are concatenated. Then, the information only go through CB5 of original Resnet.
    The results are not that bad compared to other expriments and regarding the shallowness of the architecture. This architecture is useful for detection part because 
@@ -190,7 +190,7 @@ The results are better than VGG DCT but far from original ResNet results.
 9) Another architecture experimented for object detection. To avoids dimensions problems with SSD, CBCR is concatenated to Y between CB4 and CB5.
    Thus, CbCr only go through CB5 and then colour is not taken into account by CB4.
    
-10) Experimentation of the deconvolution-RFA architecture of the Über article. The results are the best of all the architectures tested which is consistent with the results of Über.
+10) Experimentation of the deconvolution-RFA architecture of the Uber article. The results are the best of all the architectures tested which is consistent with the results of Uber.
 
 #### Table of results
 
@@ -237,9 +237,9 @@ The results are better than VGG DCT but far from original ResNet results.
 3) This architecture follows the "Late Concat RFA Thinner" architecture but the CB3 and CB4 are removed. Once concatenated,
    Y and CbCr only go through CB5 before going through the extra feature layers. The extra feature layers are kept unchanged.
    
-4) This architecture follows the "Up Sampling RFA" architecture from Über for the classification backbone. The extra feature layers are kept unchanged.
+4) This architecture follows the "Up Sampling RFA" architecture from Uber for the classification backbone. The extra feature layers are kept unchanged.
 
-5) This architecture follows the "Deconvolution RFA" architecture from Über for the classification backbone. The extra feature layers are kept unchanged.
+5) This architecture follows the "Deconvolution RFA" architecture from Uber for the classification backbone. The extra feature layers are kept unchanged.
 
 It appears from the results that the modification of extra-feature layers is more beneficial for the mAP than modifying the classication
 backbone to match dimensions. Indeed, even if the deconvolution network shows the best accuracy in classification, the best mAP
