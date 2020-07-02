@@ -12,6 +12,8 @@ This project experiments namely the use of Resnet as a backbone for detection.
 **This project was originally hosted on Gitlab INSA Rouen at [this adress](https://gitlab.insa-rouen.fr/tconstum/pao_jpeg_bis)**
 **The results of this project have then been improved by Benjamin Deguerre and led to a new publication published on June 10th ["Object Detection in the DCT Domain: is Luminance the Solution?"](https://arxiv.org/abs/2006.05732). The corresponding code was also published [here](https://github.com/D3lt4lph4/jpeg_deep)**
 
+This implementation relies on the module jpeg2dct from Uber research team. The SSD used in this repository was taken from [this repository](https://github.com/pierluigiferrari/ssd_keras) and then modified. The module of Resnet50 comes from [Keras Applications](https://github.com/keras-team/keras-applications)
+
 ## Contents
 
 1. [How to insall](#how-to-install)
