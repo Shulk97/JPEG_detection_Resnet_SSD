@@ -25,7 +25,7 @@ everett==1.0.2
 gast==0.2.0
 grpcio==1.11.0
 h5py==2.7.0
-horovod==0.16.1
+horovod==0.24.0
 html5lib==0.9999999
 idna==2.8
 ipykernel==4.8.0
